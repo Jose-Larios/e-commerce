@@ -5,6 +5,7 @@ import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailCont
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CCProvider from "./Contex/CCProvider";
+import Cart from "./Components/Cart/Cart";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:categoryId" element={<ItemListContainer />} />
-          <Route path="/detail/:id" element={<ItemDetailContainer />} />{" "}
+          <Route path="/detail/:id" element={<ItemDetailContainer />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </CCProvider>
     </>
