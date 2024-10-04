@@ -1,0 +1,52 @@
+/* Estilos para Contador */
+.contador-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.contador-button {
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.contador-button:hover {
+  background-color: #2980b9;
+}
+
+.contador-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.contador-display {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.add-to-cart-button {
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #c0392b;
+}

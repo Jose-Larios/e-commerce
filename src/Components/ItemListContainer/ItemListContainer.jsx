@@ -3,6 +3,7 @@ import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import { getDocs, collection, getFirestore } from "firebase/firestore";
 import CartContex from "../../Contex/CartContex";
+import "./style.css";
 
 const ItemListContainer = () => {
   const [productos, setProdutos] = useState([]);

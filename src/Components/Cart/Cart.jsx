@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import CartContex from "../../Contex/CartContex";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import Form from "../Form/Form";
+import "./style.css";
 
 const Cart = () => {
   const [orderId, setorderID] = useState("");
@@ -58,29 +59,35 @@ const Cart = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <div>
-      Carrito
+    <div className="cart-container">
+      <h1 className="cart-title">Carrito</h1>
       <div className="">
         {cart.map((el) => {
-          <div className="" key={el.id}>
-            <div>
-              <p>Producto: {el.titulo}</p>
-              <p>Cantidad: {el.cantidad}</p>
+          <div className="product-item" key={el.id}>
+            <div className="product-info">
+              <p className="product-title">Producto: {el.titulo}</p>
+              <p className="product-quantity">Cantidad: {el.cantidad}</p>
             </div>
-            <img src={el.img} alt={el.titulo} />
+            <img src={el.img} alt={el.titulo} className="product-image" />
             <button onClick={() => removeItem(el.id)} className="">
               Eliminar
             </button>
           </div>;
         })}
       </div>
-      <Form
-        handleChange={handleChange}
-        submit={submit}
-        formData={buyer}
-        error={error}
-      />
-      {orderId && <p>Gracias por su compra orden de compra {orderId}</p>}
+      <div className="form-container">
+        <Form
+          handleChange={handleChange}
+          submit={submit}
+          formData={buyer}
+          error={error}
+        />
+      </div>
+      {orderId && (
+        <p className="confirmation-message">
+          Gracias por su compra orden de compra {orderId}
+        </p>
+      )}
     </div>
   );
 };

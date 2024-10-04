@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 const Form = ({ handleChange, submit, formData, error }) => {
   return (
@@ -11,6 +12,7 @@ const Form = ({ handleChange, submit, formData, error }) => {
             name={key}
             onChange={handleChange}
             value={formData[key]}
+            className={error[key] ? "error" : ""}
           />
           {error[key] && <span>{error[key]}</span>}
         </div>

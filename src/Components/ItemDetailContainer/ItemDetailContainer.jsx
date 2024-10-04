@@ -3,6 +3,7 @@ import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { getDoc, doc, getFirestore } from "firebase/firestore";
 import CartContex from "../../Contex/CartContex";
+import "./style.css";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
@@ -22,7 +23,11 @@ const ItemDetailContainer = () => {
     });
   }, []);
 
-  return <div className="">{<ItemDetail item={item} onAdd={onAdd} />}</div>;
+  return (
+    <div className="detail-container">
+      {<ItemDetail item={item} onAdd={onAdd} />}
+    </div>
+  );
 };
 
 export default ItemDetailContainer;
