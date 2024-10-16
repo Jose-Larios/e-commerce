@@ -9,10 +9,7 @@ const NavBar = () => {
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"category/consolas"}>Consolas</NavLink>
       <NavLink to={"category/videojuegos"}>Videojuegos</NavLink>
-      <NavLink to={"cart"}>
-        Cart
-        <span>{cart.length}</span>
-      </NavLink>
+      <NavLink to={"cart"}>Cart {cart.length} </NavLink>
     </ul>
   );
 };

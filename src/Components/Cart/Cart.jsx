@@ -5,7 +5,7 @@ import Form from "../Form/Form";
 import "./style.css";
 
 const Cart = () => {
-  const [orderId, setorderID] = useState("");
+  const [orderId, setOrderId] = useState("");
   const { cart, removeItem, clear } = useContext(CartContex);
 
   const [buyer, setBuyer] = useState({
@@ -16,12 +16,14 @@ const Cart = () => {
     name: "",
     email: "",
   });
+
   const handleChange = (e) => {
     setBuyer({
       ...buyer,
       [e.target.name]: e.target.value,
     });
   };
+
   const submit = (e) => {
     e.preventDefault();
     const localError = {};
@@ -49,7 +51,7 @@ const Cart = () => {
     const orderCollection = collection(db, "orders");
     addDoc(orderCollection, purchase)
       .then((res) => {
-        setorderID(res.id);
+        setOrderId(res.id);
         clear();
         setBuyer({
           name: "",
@@ -58,22 +60,27 @@ const Cart = () => {
       })
       .catch((error) => console.log(error));
   };
+
   return (
     <div className="cart-container">
       <h1 className="cart-title">Carrito</h1>
       <div className="">
-        {cart.map((el) => {
-          <div className="product-item" key={el.id}>
-            <div className="product-info">
-              <p className="product-title">Producto: {el.titulo}</p>
-              <p className="product-quantity">Cantidad: {el.cantidad}</p>
+        {cart.length === 0 ? (
+          <p>El carrito está vacío</p>
+        ) : (
+          cart.map((el) => (
+            <div className="product-item" key={el.id}>
+              <div className="product-info">
+                <p className="product-title">Producto: {el.titulo}</p>
+                <p className="product-quantity">Cantidad: {el.cantidad}</p>
+              </div>
+              <img src={el.img} alt={el.titulo} className="product-image" />
+              <button onClick={() => removeItem(el.id)} className="">
+                Eliminar
+              </button>
             </div>
-            <img src={el.img} alt={el.titulo} className="product-image" />
-            <button onClick={() => removeItem(el.id)} className="">
-              Eliminar
-            </button>
-          </div>;
-        })}
+          ))
+        )}
       </div>
       <div className="form-container">
         <Form
@@ -85,7 +92,7 @@ const Cart = () => {
       </div>
       {orderId && (
         <p className="confirmation-message">
-          Gracias por su compra orden de compra {orderId}
+          Gracias por su compra. Orden de compra: {orderId}
         </p>
       )}
     </div>

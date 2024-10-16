@@ -14,6 +14,11 @@ const Contador = ({ onAdd, text = "Agregar al carrito", c = 1 }) => {
     }
   };
 
+  const handleAddToCart = () => {
+    onAdd(count);
+    alert(`Has agregado ${count} producto(s) al carrito.`);
+  };
+
   return (
     <div className="contador-container">
       <button className="contador-button" onClick={disminuir}>
@@ -23,7 +28,7 @@ const Contador = ({ onAdd, text = "Agregar al carrito", c = 1 }) => {
       <button className="contador-button" onClick={incrementar}>
         +
       </button>
-      <button className="add-to-cart-button" onClick={() => onAdd(count)}>
+      <button className="add-to-cart-button" onClick={handleAddToCart}>
         {text}
       </button>
     </div>
